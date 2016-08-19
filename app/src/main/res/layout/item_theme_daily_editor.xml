@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.hwqgooo.douknow.model.bean.Editors"/>
+    </data>
+
+    <com.hwqgooo.douknow.view.widget.CircleImageView
+        android:id="@+id/item_image"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/comment_avatar"
+        app:uri="@{item.avatar}"/>
+</layout>

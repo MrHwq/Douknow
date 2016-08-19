@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="me.tatarka.bindingcollectionadapter.LayoutManagers"/>
+
+        <import type="com.hwqgooo.douknow.viewmodel.DailyCommentVM.CommentData"/>
+
+        <variable
+            name="comment"
+            type="CommentData"/>
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/comment_rcv"
+            layout="@layout/swipe_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            bind:isRefreshing="@{Boolean.FALSE}"
+            bind:itemView="@{comment.itemView}"
+            bind:items="@{comment.items}"
+            bind:layoutManager="@{LayoutManagers.linear()}"
+            bind:onLoadMore="@{null}"
+            bind:onRefresh="@{comment.onRefresh}"/>
+    </FrameLayout>
+</layout>

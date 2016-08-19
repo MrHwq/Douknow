@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="me.tatarka.bindingcollectionadapter.LayoutManagers"/>
+
+        <variable
+            name="sections"
+            type="com.hwqgooo.douknow.viewmodel.SectionsVM"/>
+    </data>
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/swipe_rcv"
+            layout="@layout/swipe_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            bind:isRefreshing="@{sections.isRefreshing}"
+            bind:itemView="@{sections.itemView}"
+            bind:items="@{sections.items}"
+            bind:layoutManager="@{LayoutManagers.linear()}"
+            bind:onLoadMore="@{sections.onLoadMore}"
+            bind:onRefresh="@{sections.onRefresh}"/>
+    </FrameLayout>
+</layout>

@@ -1,0 +1,79 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.3"
+    dataBinding {
+        enabled true
+    }
+    defaultConfig {
+        applicationId "com.hwqgooo.douknow"
+        minSdkVersion 16
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    productFlavors {
+//        develop {}
+        xiaomi {}
+//        huawei {}
+//        anzhi {}
+    }
+    //修改生成的apk名字
+    applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            def oldFile = output.outputFile
+//            if (variant.buildType.name.equals('release')) {
+            def releaseApkName = 'ZhiHu.' + variant.productFlavors[0].name + "." + defaultConfig.versionName + '.apk'
+            output.outputFile = new File(oldFile.parent, releaseApkName)
+//            }
+        }
+    }
+
+//    sourceSets {
+//        main {
+//            java.srcDirs = ['src/main/java', 'src/main/java-gen']
+//        }
+//    }
+}
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'org.greenrobot:greendao-gradle-plugin:3.1.0'
+    }
+}
+
+apply plugin: 'org.greenrobot.greendao'
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:23.4.0'
+    compile 'com.android.support:cardview-v7:23.4.0'
+    compile 'com.android.support:recyclerview-v7:23.4.0'
+    compile 'com.android.support:design:23.4.0'
+    compile 'com.ashokvarma.android:bottom-navigation-bar:1.3.0'
+    /*recyclerview分隔符*/
+//    compile 'com.yqritc:recyclerview-flexibledivider:1.2.9'
+    /*retrofit及格式转换*/
+    compile 'com.squareup.retrofit2:retrofit:2.0.2'
+    compile 'com.squareup.retrofit2:converter-gson:2.0.2'
+    compile 'com.squareup.retrofit2:converter-scalars:2.0.2'
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.0.2'
+    /*图片加载库*/
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    /*rxjava*/
+    compile 'io.reactivex:rxandroid:1.2.0'
+    compile 'io.reactivex:rxjava:1.1.5'
+    /*sql*/
+    compile 'org.greenrobot:greendao:3.1.0'
+}

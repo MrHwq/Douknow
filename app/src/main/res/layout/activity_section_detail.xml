@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="me.tatarka.bindingcollectionadapter.LayoutManagers"/>
+
+        <variable
+            name="mainvm"
+            type="com.hwqgooo.douknow.viewmodel.MainVM"/>
+
+        <variable
+            name="sectiondetailvm"
+            type="com.hwqgooo.douknow.viewmodel.SectionDetailVM"/>
+    </data>
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:transitionName="@{sectiondetailvm.title}"
+        app:statusbarcolor="@{mainvm.statusbarcolor}">
+
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/appbarlayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@{mainvm.statusbarcolor}">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:layout_collapseMode="pin"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                app:popupTheme="@style/AlertDialog.AppCompat.Light"/>
+
+        </android.support.design.widget.AppBarLayout>
+
+        <include
+            android:id="@+id/swipe_rcv"
+            layout="@layout/swipe_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            bind:isRefreshing="@{sectiondetailvm.isRefreshing}"
+            bind:itemView="@{sectiondetailvm.itemView}"
+            bind:items="@{sectiondetailvm.items}"
+            bind:layoutManager="@{LayoutManagers.linear()}"
+            bind:onLoadMore="@{sectiondetailvm.onLoadMore}"
+            bind:onRefresh="@{sectiondetailvm.onRefresh}"/>
+
+    </android.support.design.widget.CoordinatorLayout>
+</layout>

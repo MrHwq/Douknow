@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.hwqgooo.douknow.model.bean.DailyTypeBean.SubjectDaily"/>
+    </data>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/itemmarginver"
+        android:layout_marginLeft="@dimen/itemmarginhor"
+        android:layout_marginRight="@dimen/itemmarginhor"
+        android:layout_marginTop="@dimen/itemmarginver"
+        android:transitionName="@{item.getName()}"
+        app:cardBackgroundColor="@color/card_view_background_dark"
+        app:cardCornerRadius="@dimen/cardCornerRadius"
+        app:cardElevation="@dimen/cardElevation">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="2dp">
+
+            <ImageView
+                android:id="@+id/item_image"
+                android:layout_width="@dimen/imgavatar"
+                android:layout_height="@dimen/imgavatar"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/account_avatar"
+                app:uri="@{item.getThumbnail()}"/>
+
+            <TextView
+                android:id="@+id/item_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_toRightOf="@+id/item_image"
+                android:lineSpacingExtra="2dp"
+                android:maxLines="3"
+                android:maxWidth="250dp"
+                android:padding="2dp"
+                android:text="@{item.getDescription()}"
+                android:textColor="@color/black_90"
+                android:textSize="@dimen/titletextsize"
+                tools:text="desc"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/item_desc"
+                android:text="@{item.getName()}"
+                android:textColor="@color/font_normal"
+                android:textSize="@dimen/desctextsize"
+                tools:text="name"/>
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+</layout>

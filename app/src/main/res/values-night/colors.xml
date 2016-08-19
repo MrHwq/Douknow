@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#0a0a0a</color>
+    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorAccent">#fc0404</color>
+    <color name="card_view_background_dark">#FFFFFF</color>
+    <color name="font_normal">#555555</color>
+    <color name="color_unread">#000000</color>
+    <color name="black_90">#dd000000</color>
+    <color name="tab_unselect_color">#AAFFFFFF</color>
+    <color name="navigation_item_icon_color_normal">#AEAEAE</color>
+</resources>

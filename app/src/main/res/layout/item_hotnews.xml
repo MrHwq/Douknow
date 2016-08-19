@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.hwqgooo.douknow.model.bean.HotNews.HotNewsInfo"/>
+    </data>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/itemmarginver"
+        android:layout_marginLeft="@dimen/itemmarginhor"
+        android:layout_marginRight="@dimen/itemmarginhor"
+        android:layout_marginTop="@dimen/itemmarginver"
+        app:cardBackgroundColor="@color/card_view_background_dark"
+        app:cardCornerRadius="@dimen/cardCornerRadius"
+        app:cardElevation="@dimen/cardElevation">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="2dp">
+
+            <ImageView
+                android:id="@+id/item_image"
+                android:layout_width="@dimen/imgavatar"
+                android:layout_height="@dimen/imgavatar"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/account_avatar"
+                android:transitionName="@{item.title}"
+                app:uri="@{item.thumbnail}"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@+id/item_image"
+                android:maxLines="3"
+                android:maxWidth="250dp"
+                android:padding="2dp"
+                android:text="@{item.title}"
+                android:textColor="@{item.isRead ? @color/color_read : @color/font_normal}"
+                android:textSize="@dimen/titletextsize"/>
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+</layout>

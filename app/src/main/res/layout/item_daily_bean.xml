@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.hwqgooo.douknow.model.bean.DailyBean"/>
+
+        <import type="android.view.View"/>
+
+        <variable
+            name="item"
+            type="DailyBean"/>
+    </data>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/itemmarginver"
+        android:layout_marginLeft="@dimen/itemmarginhor"
+        android:layout_marginRight="@dimen/itemmarginhor"
+        android:layout_marginTop="@dimen/itemmarginver"
+        android:clickable="true"
+        app:cardBackgroundColor="@color/card_view_background_dark"
+        app:cardCornerRadius="@dimen/cardCornerRadius"
+        app:cardElevation="@dimen/cardElevation">
+
+        <RelativeLayout
+            android:id="@+id/item_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/imgavatar"
+            android:padding="2dp">
+
+            <ImageView
+                android:id="@+id/item_image"
+                android:layout_width="@dimen/imgavatar"
+                android:layout_height="@dimen/imgavatar"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/account_avatar"
+                android:transitionName="@{item.getTitle()}"
+                app:uri="@{item.getImages.get(0)}"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignRight="@+id/item_image"
+                android:src="@drawable/home_pic"
+                android:visibility="@{item.isMultipic() ? View.VISIBLE : View.GONE}"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:layout_toRightOf="@+id/item_image"
+                android:lineSpacingExtra="2dp"
+                android:maxLines="3"
+                android:padding="2dp"
+                android:text="@{item.getTitle()}"
+                android:textColor="@{item.isRead ? @color/color_read : @color/font_normal}"
+                android:textSize="@dimen/titletextsize"
+                tools:text="text"/>
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+</layout>

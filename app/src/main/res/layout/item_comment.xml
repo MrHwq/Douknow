@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.hwqgooo.douknow.model.bean.DailyComment.CommentInfo"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="50dp">
+
+        <com.hwqgooo.douknow.view.widget.CircleImageView
+            android:id="@+id/user_pic"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:padding="5dp"
+            android:src="@drawable/account_avatar"
+            app:uri="@{item.avatar}"/>
+
+        <TextView
+            android:id="@+id/user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_toRightOf="@+id/user_pic"
+            android:text="@{item.author}"
+            android:textColor="@color/black_90"
+            android:textSize="18sp"/>
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="15dp"
+            android:layout_toLeftOf="@+id/user_parise_num"
+            android:src="@drawable/praise"/>
+
+        <TextView
+            android:id="@+id/user_parise_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="17dp"
+            android:text="@{Integer.toString(item.likes)}"
+            android:textColor="@color/font_normal"/>
+
+        <TextView
+            android:id="@+id/user_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/user_name"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:text="@{item.content}"
+            android:textColor="@color/font_normal"
+            android:textSize="14sp"/>
+
+        <TextView
+            android:id="@+id/user_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/user_content"
+            android:layout_marginRight="10dp"
+            android:padding="10dp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/navigation_item_icon_color_normal"/>
+
+    </RelativeLayout>
+</layout>

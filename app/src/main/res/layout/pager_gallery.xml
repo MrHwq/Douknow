@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.databinding.ObservableList"/>
+
+        <import type="me.tatarka.bindingcollectionadapter.ItemView"/>
+
+        <import type="android.view.View"/>
+
+        <import type="com.hwqgooo.douknow.model.databindmodel.TopDailyModel"/>
+
+        <variable
+            name="item"
+            type="TopDailyModel"/>
+
+        <!--<variable-->
+        <!--name="selectPage"-->
+        <!--type="int"/>-->
+
+        <!--<variable-->
+        <!--name="indicatorCount"-->
+        <!--type="int"/>-->
+
+        <!--<variable-->
+        <!--name="itemView"-->
+        <!--type="ItemView"/>-->
+
+        <!--<variable-->
+        <!--name="items"-->
+        <!--type="ObservableList"/>-->
+
+        <!--<variable-->
+        <!--name="onpageselect"-->
+        <!--type="com.hwqgooo.databinding.command.ReplyCommand&lt;Integer>"/>-->
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/imgshow"
+        android:orientation="vertical">
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/pager"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/imgshow"
+            app:CurrentItem="@{item.selectPage}"
+            app:itemView="@{item.itemView}"
+            app:items="@{item.items}"
+            app:onPageSelectedCommand="@{item.onpageselect}"/>
+
+        <!--<View-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="128dp"-->
+        <!--android:layout_gravity="top"-->
+        <!--android:background="@drawable/shadow_gradient"/>-->
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="84dp"
+            android:layout_gravity="bottom"
+            android:background="@drawable/shadow_gradient_reserve"/>
+
+        <com.hwqgooo.douknow.view.widget.CircleIndicator
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_gravity="bottom|center"
+            android:layout_marginBottom="20dp"
+            app:indicator="@{item.indicatorCount}"
+            app:viewpager="@{pager}"/>
+    </FrameLayout>
+</layout>
